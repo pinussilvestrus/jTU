@@ -2,17 +2,49 @@
   <div class="center-align">
     <h2> JSON-to-UML Converter</h2>
   </div>
+  <div class="testData">
+    <p>{
+      _umlClassName: 'TestClass',
+      string: "Hi",
+      number: 3,
+      testObject: {
+        _umlClassName: 'Thing',
+        test: 1
+      },
+      testArray: [{_umlClassName: 'Hello', string: 'test'}, 'string']
+    }</p>
+    <p class="testData_header">Test-JSON</p>
+  </div>
   <div class="row">
     <!-- JSON -->
     <div class="col-md-6 col-sm-6 col-xs-12 input-field">
-      <label for="textareaJSON">JSON-Object</label>
-      <textarea id="textareaJSON" class="materialize-textarea" ng-model="jsonObject"></textarea>
-      <a class="waves-effect waves-light btn" ng-click="jsonToUML(jsonObject)">Konvertieren</a>
+      <form novalidate name="jsonForm">
+        <div class="input-field">
+          <label for="textareaJSON">JSON-Object</label>
+          <textarea id="textareaJSON" ng-valid="jsonValid" name="jsonObject"
+          class="materialize-textarea" ng-model="jsonObject" required ng-disabled="processing"></textarea>
+        </div>
+        <div class="err-message" ng-show="!jsonValid"><p style="margin: 5px 0 10px 0">JSON ist nicht valide!</p></div>
+        <a class="waves-effect waves-light btn" ng-disabled="processing" ng-click="jsonToUML(jsonObject)">Konvertieren</a>
+
+        <div class="preloader-wrapper small active" ng-show="processing">
+         <div class="spinner-layer spinner-green-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div><div class="gap-patch">
+             <div class="circle"></div>
+           </div><div class="circle-clipper right">
+             <div class="circle"></div>
+           </div>
+         </div>
+       </div>
+
+      </form>
     </div>
     <!-- UML -->
     <div class="col-md-6 col-sm-6 col-xs-12 input-field">
       <label for="textareaUML">UML-JSON-Object</label>
-      <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonObject"></textarea>
+      <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
     </div>
   </div>
   <div class="spacer40"></div>

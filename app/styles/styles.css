@@ -78,9 +78,9 @@ h6 {
 }
 
 .copyright {
-	position: fixed;
 	bottom: 5px;
 	left: 5px;
+	margin: 2%;
 }
 
 .copyright a {
@@ -98,4 +98,33 @@ h6 {
 	border-color: black;
 	box-shadow: 0 0px 40px -15px #525252;
   background: white;
+}
+
+.err-message: {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.err-message p {
+    background: #f04124;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+}
+
+.testData {
+	background-color: #E0F2F1;
+	margin-left: 50px;
+	margin-right: 50px;
+	padding: 1.5rem 1rem 1rem 1rem;
+	font-weight: bold;
+}
+
+.testData_header {
+	right: 1px;
+  bottom: 1px;
+  text-align: right;
+	font-size: 70%;
+  opacity: 0.6;
 }

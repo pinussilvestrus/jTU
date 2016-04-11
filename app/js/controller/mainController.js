@@ -1,12 +1,23 @@
 angular.module("mainController", [])
-	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, Converter){
+	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, $timeout, Converter){
 		$scope.initialize = function() {
-
+			$scope.jsonValid = true;
 		};
 
 		$scope.jsonToUML = function(jsonString) {
-			var json = JSON.parse(JSON.stringify(eval("(" + jsonString + ")")));
-			console.log(Converter.jsonToUML(json));
+			$scope.processing = true;
+			$scope.jsonValid = true;
+			try {
+				var json = JSON.parse(JSON.stringify(eval("(" + jsonString + ")")));
+				$timeout(function(){
+					$scope.processing = false;
+					$scope.umlJsonObject = Converter.jsonToUML(json);
+					$scope.umlJsonString = JSON.stringify($scope.umlJsonObject);
+				}, 2000);
+			} catch(err) {
+				$scope.processing = false;
+				$scope.jsonValid = false;
+			}
 		};
 
 	});

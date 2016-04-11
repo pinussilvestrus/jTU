@@ -76,7 +76,6 @@ angular.module("converterService", [])
               umlObject.associations.push(_object);
             }
           } else {
-            console.log('hier');
             _object = _converter.jsonToUML(_property);
             umlObject.associations.push(_object);
           }
