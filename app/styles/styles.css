@@ -128,3 +128,21 @@ h6 {
 	font-size: 70%;
   opacity: 0.6;
 }
+
+.umlClass {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: #BDBDBD;
+  color: black;
+  box-shadow: 5px 5px 40px -20px #525252;
+}
+
+.umlClass_className {
+	text-align: center;
+}
+
+.umlClass_line {
+    border-style: ridge;
+    border-width: thin;
+
+}

@@ -42,9 +42,14 @@
       </form>
     </div>
     <!-- UML -->
-    <div class="col-md-6 col-sm-6 col-xs-12 input-field">
-      <label for="textareaUML">UML-JSON-Object</label>
-      <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="input-field">
+        <label for="textareaUML">UML-JSON-Object</label>
+        <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
+      </div>
+      <div class="spacer40"></div>
+      <h4>UML-Diagramm</h4>
+      <uml-class model="umlJsonObject" ng-if="umlJsonObject"></uml-class>
     </div>
   </div>
   <div class="spacer40"></div>
