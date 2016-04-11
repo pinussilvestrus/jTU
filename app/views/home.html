@@ -4,12 +4,15 @@
   </div>
   <div class="row">
     <!-- JSON -->
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      JSON-Object
+    <div class="col-md-6 col-sm-6 col-xs-12 input-field">
+      <label for="textareaJSON">JSON-Object</label>
+      <textarea id="textareaJSON" class="materialize-textarea" ng-model="jsonObject"></textarea>
+      <a class="waves-effect waves-light btn" ng-click="jsonToUML(jsonObject)">Konvertieren</a>
     </div>
     <!-- UML -->
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      UML-Class-Diagram
+    <div class="col-md-6 col-sm-6 col-xs-12 input-field">
+      <label for="textareaUML">UML-JSON-Object</label>
+      <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonObject"></textarea>
     </div>
   </div>
   <div class="spacer40"></div>

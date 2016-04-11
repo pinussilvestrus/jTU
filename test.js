@@ -1,4 +1,4 @@
-var converter = require("./app/js/jTUConverter");
+var converter = require("./app/lib/jTUConverter");
 
 var _testJson = {
   _umlClassName: 'TestClass',

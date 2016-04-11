@@ -1,6 +1,7 @@
 var _converter = {};
 
 /**
+DEPRECATED!!
 * ##structure of umlObject##
 {
   className: String,
