@@ -1,0 +1,7 @@
+.idea/
+node_modules/
+bower_components/
+brunchat.iml
+npm-debug.log
+dist/*
+*.mp4
