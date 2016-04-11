@@ -1,5 +1,0 @@
-##9.4.2016
-# (start)
-# create textarea-input for json object
-# add json-validator
-# handle json input, create main object structure
