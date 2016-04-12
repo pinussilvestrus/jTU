@@ -17,13 +17,13 @@ angular.module("umlClassDirective", [])
               var div1 = document.getElementById(scope.model.id);
               var div2 = document.getElementById(scope.model.associations[i].object.id);
 
-              Drawer.drawLine(div1, div2, "#424242", 1);
+              Drawer.drawLine(div1, div2, "#424242", 1); // crashes UI :(
             }
           };
 
           $timeout(function(){
-            scope.drawAssociationLines();
-          }, 50);
+            //scope.drawAssociationLines();
+          }, 50); // crashes the UI :(
 
         }
       };

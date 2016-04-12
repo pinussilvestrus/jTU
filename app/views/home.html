@@ -18,14 +18,14 @@
   <div class="row">
     <!-- JSON -->
     <div class="col-md-6 col-sm-6 col-xs-12 input-field">
-      <form novalidate name="jsonForm" id="jsonForm">
+      <form novalidate name="jsonForm" id="jsonForm" ng-submit="jsonToUML(jsonObject)">
         <div class="input-field">
           <label for="textareaJSON">JSON-Object</label>
           <textarea id="textareaJSON" name="jsonObject"
           class="materialize-textarea" ng-model="jsonObject" required ng-disabled="processing"></textarea>
         </div>
         <div class="err-message" ng-show="!jsonValid"><p style="margin: 5px 0 10px 0">JSON ist nicht valide!</p></div>
-        <a class="waves-effect waves-light btn" ng-disabled="processing" ng-click="jsonToUML(jsonObject)">Konvertieren</a>
+        <a class="waves-effect waves-light btn" ng-disabled="processing" ng-click="jsonToUML(jsonObject)">Convert</a>
 
         <div class="preloader-wrapper small active" ng-show="processing">
          <div class="spinner-layer spinner-green-only">
