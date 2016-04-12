@@ -47,10 +47,12 @@
         <label for="textareaUML">UML-JSON-Object</label>
         <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
       </div>
-      <div class="spacer40"></div>
-      <h4>UML-Diagramm</h4>
-      <uml-class model="umlJsonObject" ng-if="umlJsonObject"></uml-class>
     </div>
+    <div class="spacer40"></div>
+  </div>
+  <div class="center-align">
+    <h4>UML-Diagramm</h4>
+    <uml-class model="umlJsonObject" ng-if="umlJsonObject"></uml-class>
   </div>
   <div class="spacer40"></div>
 </div>

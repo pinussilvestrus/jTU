@@ -60,15 +60,16 @@ angular.module("converterService", [])
 
       for (key in json) {
 
-        var _property = json[key];
+				var _key = key;
+        var _property = json[_key];
 
-        if (key === '_umlClassName') {
+        if (_key === '_umlClassName') {
           umlObject.className = _property;
           continue;
         }
 
         var _type = _typeOf(_property);
-        var _newAttribute = {name: key, type: _type};
+        var _newAttribute = {name: _key, type: _type};
         var _object = {};
         if (typeof(_property) === 'object') {
           if(_type.includes('Array')) {

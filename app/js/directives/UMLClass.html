@@ -3,7 +3,24 @@
   <div class="spacer10"></div>
   <div class="umlClass_line"></div>
   <div class="spacer10"></div>
+  <!--Attributes -->
   <div class="umlClass_attributes">
-    {{model.attributes}}
+    <div class="umlClass_attribute" ng-repeat="attribute in model.attributes">
+      <p>+ {{attribute.name}} : {{attribute.type}}</p>
+    </div>
   </div>
+  <div class="spacer10"></div>
+  <div class="umlClass_line"></div>
+  <div class="spacer10"></div>
+  <!-- Methods -->
+  <div class="umlClass_methods">
+     <!-- Todo: uml methods to json functions -->
+  </div>
+</div>
+
+<!-- associations -->
+<!-- todo: lines -->
+<div class="spacer20"></div>
+<div ng-repeat="association in model.associations">
+  <uml-class model="association"></uml-class>
 </div>

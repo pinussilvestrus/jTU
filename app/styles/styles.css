@@ -135,14 +135,23 @@ h6 {
   border-color: #BDBDBD;
   color: black;
   box-shadow: 5px 5px 40px -20px #525252;
+	width: 40%;
+	margin: auto;
+	text-align: left;
 }
 
 .umlClass_className {
 	text-align: center;
+	font-size: 200%;
 }
 
 .umlClass_line {
     border-style: ridge;
     border-width: thin;
 
+}
+
+.umlClass_attribute {
+	font-weight: bold;
+  padding: 0 0 0 5%;
 }
