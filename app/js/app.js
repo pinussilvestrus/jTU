@@ -3,5 +3,6 @@ angular.module("mainApp", [
   'ui.materialize',
   'mainController',
   'converterService',
+  'drawerService',
   'umlClassDirective'
 ])

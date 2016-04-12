@@ -1,26 +1,29 @@
-<div class="umlClass">
-  <h3 class="umlClass_className">{{model.className}}</h3>
-  <div class="spacer10"></div>
-  <div class="umlClass_line"></div>
-  <div class="spacer10"></div>
-  <!--Attributes -->
-  <div class="umlClass_attributes">
-    <div class="umlClass_attribute" ng-repeat="attribute in model.attributes">
-      <p>+ {{attribute.name}} : {{attribute.type}}</p>
+<div>
+  <div class="umlClass" ng-attr-id={{model.id}}>
+    <h3 class="umlClass_className">{{model.className}}</h3>
+    <div class="spacer10"></div>
+    <div class="umlClass_line"></div>
+    <div class="spacer10"></div>
+    <!--Attributes -->
+    <div class="umlClass_attributes">
+      <div class="umlClass_attribute" ng-repeat="attribute in model.attributes">
+        <p>+ {{attribute.name}} : {{attribute.type}}</p>
+      </div>
+    </div>
+    <div class="spacer10"></div>
+    <div class="umlClass_line"></div>
+    <div class="spacer10"></div>
+    <!-- Methods -->
+    <div class="umlClass_methods">
+       <!-- Todo: uml methods to json functions -->
     </div>
   </div>
-  <div class="spacer10"></div>
-  <div class="umlClass_line"></div>
-  <div class="spacer10"></div>
-  <!-- Methods -->
-  <div class="umlClass_methods">
-     <!-- Todo: uml methods to json functions -->
-  </div>
-</div>
 
-<!-- associations -->
-<!-- todo: lines -->
-<div class="spacer20"></div>
-<div ng-repeat="association in model.associations">
-  <uml-class model="association"></uml-class>
+  <!-- associations -->
+  <div class="spacer20"></div>
+  <div ng-repeat="association in model.associations">
+    <!--<p style="text-align: left">{{association.name}}</p>
+    <p style="text-align: left">{{association.multiplicity}}</p>-->
+    <uml-class model="association.object"></uml-class>
+  </div>
 </div>

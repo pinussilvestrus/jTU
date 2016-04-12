@@ -3,12 +3,20 @@ angular.module("converterService", [])
 	.factory("Converter", function($http, $q, $location, $anchorScroll, $sce){
     var _converter = {};
 
+		var _guidGenerator = function guidGenerator() {
+    	var S4 = function() {
+       	return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    	};
+    	return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
+		};
+
     /**
     * ##structure of umlObject##
     {
+			id: String,
       className: String,
       attributes: Array of {name: String, type: String of ['string', 'number', 'date', 'Object', List of ['string', 'number', List, 'object']]},
-      associations: Array of umlObjects
+      associations: Array of {name: String, object: umlObject, multiplicity: String of ['1:n', '1:1', 'm:n']}
     }
     * todo: if array has just equal-typed objects, then add to associations
     **/
@@ -53,6 +61,7 @@ angular.module("converterService", [])
 
     _converter.jsonToUML = function(json) {
       var umlObject = {
+				id: _guidGenerator(),
         className: '',
         attributes : [],
         associations: []
@@ -74,11 +83,12 @@ angular.module("converterService", [])
         if (typeof(_property) === 'object') {
           if(_type.includes('Array')) {
             if (!_type.includes('string') && !_type.includes('number') && !_type.includes('mixed')) {
-              umlObject.associations.push(_object);
+							_object = _converter.jsonToUML(_property[0]);
+              umlObject.associations.push({name: _key, object: _object, multiplicity: '1:n'});
             }
           } else {
             _object = _converter.jsonToUML(_property);
-            umlObject.associations.push(_object);
+            umlObject.associations.push({name: _key, object: _object, multiplicity: '1:1'});
           }
         }
 

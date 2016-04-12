@@ -18,10 +18,10 @@
   <div class="row">
     <!-- JSON -->
     <div class="col-md-6 col-sm-6 col-xs-12 input-field">
-      <form novalidate name="jsonForm">
+      <form novalidate name="jsonForm" id="jsonForm">
         <div class="input-field">
           <label for="textareaJSON">JSON-Object</label>
-          <textarea id="textareaJSON" ng-valid="jsonValid" name="jsonObject"
+          <textarea id="textareaJSON" name="jsonObject"
           class="materialize-textarea" ng-model="jsonObject" required ng-disabled="processing"></textarea>
         </div>
         <div class="err-message" ng-show="!jsonValid"><p style="margin: 5px 0 10px 0">JSON ist nicht valide!</p></div>
@@ -43,7 +43,7 @@
     </div>
     <!-- UML -->
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <div class="input-field">
+      <div class="input-field" id="umlField">
         <label for="textareaUML">UML-JSON-Object</label>
         <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
       </div>
