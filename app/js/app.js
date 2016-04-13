@@ -4,7 +4,8 @@ angular.module("mainApp", [
   'mainController',
   'converterService',
   'drawerService',
-  'umlClassDirective'
+  'umlClassDirective',
+  'associationDirective'
 ])
 
 document.onmousemove = function(e)

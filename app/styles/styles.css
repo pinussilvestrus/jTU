@@ -24,6 +24,11 @@ a:hover, a:active {
 .brand-logo img {
 	max-height:46px;
 }
+
+association {
+	position: absolute
+}
+
 .spacer10 { height: 10px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
 .spacer20 { height: 20px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
 .spacer40 { height: 40px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }

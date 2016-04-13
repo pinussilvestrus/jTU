@@ -7,6 +7,7 @@ angular.module("mainController", [])
 
 		$scope.initialize = function() {
 			$scope.jsonValid = true;
+			$rootScope.associations = [];
 			//_testDrawing();
 		};
 
