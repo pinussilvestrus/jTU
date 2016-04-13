@@ -2,7 +2,7 @@ angular.module("mainController", [])
 	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, $timeout, Converter, Drawer){
 
 		var _testDrawing = function() {
-			connectElements($("#svg1"), $("#path1"), $("#testData"),  $("#umlField"));
+			Drawer.connectElements($("#svg1"), $("#path1"), $("#testData"),  $("#umlField"));
 		};
 
 		$scope.initialize = function() {

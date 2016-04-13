@@ -1,4 +1,4 @@
-<div ng-attr-id="{{model.id + '-svgContainer'}}" class="svgContainer">
+<div>
   <div class="umlClass" ng-attr-id={{model.id}}>
     <h3 class="umlClass_className">{{model.className}}</h3>
     <div class="spacer10"></div>
@@ -24,7 +24,7 @@
   <div ng-repeat="association in model.associations">
     <!--<p style="text-align: left">{{association.name}}</p>
     <p style="text-align: left">{{association.multiplicity}}</p>-->
-    <div>
+    <div  ng-attr-id="{{model.id + '-svgContainer-' + association.object.id}}" class="svgContainer">
       <svg ng-attr-id="{{model.id + '-svg-' + association.object.id}}" width="0" height="0" >
         <path
             ng-attr-id="{{model.id + '-path-' + association.object.id}}"
@@ -33,7 +33,7 @@
             fill="none"
             stroke-width="5px";/>
       </svg>
-      <uml-class model="association.object"></uml-class>
     </div>
+      <uml-class model="association.object"></uml-class>
   </div>
 </div>

@@ -15,12 +15,13 @@ angular.module("umlClassDirective", [])
             for (var i = 0; i < scope.model.associations.length; i++) {
 
               var association = scope.model.associations[i];
+
               Drawer.connectElements(
-                $("#" + scope.model.id + '-svg-' + association.object.id),
-                $("#" + scope.model.id + '-path-' + association.object.id),
+                $("#svg1"), //scope.model.id + '-path-' + association.object.id
+                $("#path1"),   // + scope.model.id + '-svg-' + association.object.id
                 $("#" + scope.model.id),
                 $("#" + association.object.id),
-                $("#" + scope.model.id + '-svgContainer'));
+                $("#" + scope.model.id + '-svgContainer-' + association.object.id));
             }
           };
 

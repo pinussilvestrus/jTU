@@ -11,6 +11,6 @@ document.onmousemove = function(e)
 {
     var x = e.pageX;
     var y = e.pageY;
-    if (y > 700)
-    console.log(y);
+    if (y > 700);
+    //console.log(y);
 };
