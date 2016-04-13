@@ -23,7 +23,7 @@ angular.module("umlClassDirective", [])
 
           $timeout(function(){
             //scope.drawAssociationLines();
-          }, 50); // crashes the UI :(
+          }); // crashes the UI :(
 
         }
       };

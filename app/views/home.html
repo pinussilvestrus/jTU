@@ -1,8 +1,16 @@
-<div class="main" ng-init="initialize()">
+<div class="main" ng-init="initialize()" id="svgContainer">
+    <svg id="svg1" width="0" height="0" >
+      <path
+          id="path1"
+          d="M0 0"
+          stroke="#000"
+          fill="none"
+          stroke-width="12px";/>
+    </svg>
   <div class="center-align">
     <h2> JSON-to-UML Converter</h2>
   </div>
-  <div class="testData">
+  <div class="testData" id="testData">
     <p>{
       _umlClassName: 'TestClass',
       string: "Hi",
@@ -25,7 +33,8 @@
           class="materialize-textarea" ng-model="jsonObject" required ng-disabled="processing"></textarea>
         </div>
         <div class="err-message" ng-show="!jsonValid"><p style="margin: 5px 0 10px 0">JSON ist nicht valide!</p></div>
-        <a class="waves-effect waves-light btn" ng-disabled="processing" ng-click="jsonToUML(jsonObject)">Convert</a>
+        <a class="waves-effect waves-light btn" ng-disabled="processing"
+          id="convertBtn" ng-click="jsonToUML(jsonObject)">Convert</a>
 
         <div class="preloader-wrapper small active" ng-show="processing">
          <div class="spinner-layer spinner-green-only">

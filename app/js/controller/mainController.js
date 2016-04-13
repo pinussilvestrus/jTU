@@ -2,14 +2,12 @@ angular.module("mainController", [])
 	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, $timeout, Converter, Drawer){
 
 		var _testDrawing = function() {
-			var div1 = document.getElementById('jsonForm');
-    	var div2 = document.getElementById('umlField');
-
-			Drawer.drawLine(div1, div2, "#0F0", 1);
+			connectElements($("#svg1"), $("#path1"), $("#testData"),  $("#convertBtn"));
 		};
 
 		$scope.initialize = function() {
 			$scope.jsonValid = true;
+			//_testDrawing();
 		};
 
 		$scope.jsonToUML = function(jsonString) {
