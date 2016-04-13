@@ -17,7 +17,7 @@ angular.module("drawerService", [])
 		    // get the path's stroke width (if one wanted to be  really precize, one could use half the stroke size)
 		    var stroke =  parseFloat(path.attr("stroke-width"));
 		    // check if the svg is big enough to draw the path, if not, set heigh/width
-		    if (svg.attr("height") <  endY)                 svg.attr("height", endY - 200);
+		    if (svg.attr("height") <  endY)                 svg.attr("height", endY);
 		    if (svg.attr("width" ) < (startX + stroke) )    svg.attr("width", (startX + stroke));
 		    if (svg.attr("width" ) < (endX   + stroke) )    svg.attr("width", (endX   + stroke));
 
@@ -65,11 +65,11 @@ angular.module("drawerService", [])
 
 		    // calculate path's start (x,y)  coords
 		    // we want the x coordinate to visually result in the element's mid point
-		    var startX = startCoord.left;// + 0.5*startElem.outerWidth();   // x = left offset + 0.5*width - svg's left offset
-		    var startY = startCoord.top;       // y = top offset + height - svg's top offset
+		    var startX = startCoord.left + 0.5*startElem.outerWidth();   // x = left offset + 0.5*width - svg's left offset
+		    var startY = startCoord.top + startElem.outerHeight();       // y = top offset + height - svg's top offset
 
 		        // calculate path's end (x,y) coords
-		    var endX = endCoord.left;
+		    var endX = endCoord.left + 0.5*endElem.outerWidth();
 		    var endY = endCoord.top;
 
 				console.log(startElem.outerWidth());
