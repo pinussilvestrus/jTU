@@ -14,15 +14,18 @@ angular.module("umlClassDirective", [])
 
             for (var i = 0; i < scope.model.associations.length; i++) {
 
-              var div1 = document.getElementById(scope.model.id);
-              var div2 = document.getElementById(scope.model.associations[i].object.id);
-
-              Drawer.drawLine(div1, div2, "#424242", 1); // crashes UI :(
+              var association = scope.model.associations[i];
+              Drawer.connectElements(
+                $("#" + scope.model.id + '-svg-' + association.object.id),
+                $("#" + scope.model.id + '-path-' + association.object.id),
+                $("#" + scope.model.id),
+                $("#" + association.object.id),
+                $("#" + scope.model.id + '-svgContainer'));
             }
           };
 
           $timeout(function(){
-            //scope.drawAssociationLines();
+            scope.drawAssociationLines();
           }); // crashes the UI :(
 
         }

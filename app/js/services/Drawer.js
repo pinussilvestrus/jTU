@@ -4,37 +4,95 @@ angular.module("drawerService", [])
 
     var drawer = {};
 
-    var getOffset = function( el ) {
-      var rect = el.getBoundingClientRect();
-      return {
-          left: rect.left + window.pageXOffset,
-          top: rect.top + window.pageYOffset,
-          width: rect.width || el.offsetWidth,
-          height: rect.height || el.offsetHeight
-      };
-    };
+		//helper functions, it turned out chrome doesn't support Math.sgn()
+		var _signum = function(x) {
+		    return (x < 0) ? -1 : 1;
+		};
 
-    drawer.drawLine = function(div1, div2, color, thickness) {
-        var off1 = getOffset(div1);
-        var off2 = getOffset(div2);
-        // center
-        var x1 = off1.left + off1.width / 2;
-        var y1 = off1.top + off1.height;
+		var _absolute = function(x) {
+		    return (x < 0) ? -x : x;
+		};
 
-        var x2 = off2.left + off2.width / 2;
-        var y2 = off2.top;
-        // distance
-        var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
-        // center
-        var cx = ((x1 + x2) / 2) - (length / 2);
-        var cy = ((y1 + y2) / 2) - (thickness / 2);
-        // angle
-        var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
-        // make hr
-        var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);' />";
+		var _drawPath = function(svg, path, startX, startY, endX, endY) {
+		    // get the path's stroke width (if one wanted to be  really precize, one could use half the stroke size)
+		    var stroke =  parseFloat(path.attr("stroke-width"));
+		    // check if the svg is big enough to draw the path, if not, set heigh/width
+		    if (svg.attr("height") <  endY)                 svg.attr("height", endY - 200);
+		    if (svg.attr("width" ) < (startX + stroke) )    svg.attr("width", (startX + stroke));
+		    if (svg.attr("width" ) < (endX   + stroke) )    svg.attr("width", (endX   + stroke));
 
-        document.body.innerHTML += htmlLine;
-    };
+		    var deltaX = (endX - startX) * 0.15;
+		    var deltaY = (endY - startY) * 0.15;
+		    // for further calculations which ever is the shortest distance
+		    var delta  =  deltaY < _absolute(deltaX) ? deltaY : _absolute(deltaX);
+
+		    // set sweep-flag (counter/clock-wise)
+		    // if start element is closer to the left edge,
+		    // draw the first arc counter-clockwise, and the second one clock-wise
+		    var arc1 = 0; var arc2 = 1;
+		    if (startX > endX) {
+		        arc1 = 1;
+		        arc2 = 0;
+		    }
+		    // draw tha pipe-like path
+		    // 1. move a bit down, 2. arch,  3. move a bit to the right, 4.arch, 5. move down to the end
+		    path.attr("d",  "M"  + startX + " " + startY +
+		                    " V" + (startY + delta) +
+		                    " A" + delta + " " +  delta + " 0 0 " + arc1 + " " + (startX + delta*_signum(deltaX)) + " " + (startY + 2*delta) +
+		                    " H" + (endX - delta*_signum(deltaX)) +
+		                    " A" + delta + " " +  delta + " 0 0 " + arc2 + " " + endX + " " + (startY + 3*delta) +
+		                    " V" + endY );
+		};
+
+		drawer.connectElements = function(svg, path, startElem, endElem, container) {
+		    var _container = container || "#svgContainer";
+		    var svgContainer= $(_container);
+
+		    // if first element is lower than the second, swap!
+		    if(startElem.offset().top > endElem.offset().top){
+		        var temp = startElem;
+		        startElem = endElem;
+		        endElem = temp;
+		    }
+
+		    // get (top, left) corner coordinates of the svg container
+		    var svgTop  = svgContainer.offset().top;
+		    var svgLeft = svgContainer.offset().left;
+
+		    // get (top, left) coordinates for the two elements
+		    var startCoord = startElem.offset();
+		    var endCoord   = endElem.offset();
+
+		    // calculate path's start (x,y)  coords
+		    // we want the x coordinate to visually result in the element's mid point
+		    var startX = startCoord.left;// + 0.5*startElem.outerWidth();   // x = left offset + 0.5*width - svg's left offset
+		    var startY = startCoord.top;       // y = top offset + height - svg's top offset
+
+		        // calculate path's end (x,y) coords
+		    var endX = endCoord.left;
+		    var endY = endCoord.top;
+
+				console.log(startElem.outerWidth());
+				console.log(startCoord);
+				console.log(endCoord);
+				console.log(startX);
+				console.log(startY);
+				console.log(endX);
+				console.log(endY);
+
+		    // call function for drawing the path
+		    _drawPath(svg, path, startX, startY, endX, endY);
+		};
+
+		/**
+
+		$(window).resize(function () {
+		    // reset svg each time
+		    $("#svg1").attr("height", "0");
+		    $("#svg1").attr("width", "0");
+		    connectAll();
+		});**/
+
     return drawer;
 
   });
