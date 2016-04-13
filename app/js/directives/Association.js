@@ -22,7 +22,7 @@ angular.module("associationDirective", [])
           var _drawLine = function() {
             Drawer.connectElements(
               $("#" + scope.model.associationId),
-              $("#" + scope.model.path),
+              $("#" + scope.model.pathId),
               $("#" + scope.model.startId),
               $("#" + scope.model.endId),
               $("#svgContainer"));
