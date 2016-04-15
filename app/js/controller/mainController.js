@@ -8,12 +8,13 @@ angular.module("mainController", [])
 		$scope.initialize = function() {
 			$scope.jsonValid = true;
 			$rootScope.associations = [];
+			$scope.umlJsonObject = undefined;
 			//_testDrawing();
 		};
 
 		$scope.jsonToUML = function(jsonString) {
+			$scope.initialize();
 			$scope.processing = true;
-			$scope.jsonValid = true;
 			try {
 				var json = JSON.parse(JSON.stringify(eval("(" + jsonString + ")")));
 				$scope.processing = false;

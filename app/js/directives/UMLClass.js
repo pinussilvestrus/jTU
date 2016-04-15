@@ -32,7 +32,11 @@ angular.module("umlClassDirective", [])
 
           $timeout(function(){
             scope.addAssociationLines();
-          }); // crashes the UI :(
+          });
+
+          scope.$watch("model",function() {
+              scope.addAssociationLines();
+          });
 
         }
       };
