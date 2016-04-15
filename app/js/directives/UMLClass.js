@@ -21,12 +21,6 @@ angular.module("umlClassDirective", [])
                 startId: scope.model.id,
                 endId: association.object.id
               });
-              /**Drawer.connectElements(
-                $("#" + scope.model.id + '-svg-' + association.object.id),
-                $("#" + scope.model.id + '-path-' + association.object.id),
-                $("#" + scope.model.id),
-                $("#" + association.object.id),
-                $("#svgContainer" /*+ scope.model.id + '-svgContainer-' + association.object.id));**/
             }
           };
 
@@ -34,7 +28,7 @@ angular.module("umlClassDirective", [])
             scope.addAssociationLines();
           });
 
-          scope.$watch("model",function() {
+          scope.$watch("model",function() { // update
               scope.addAssociationLines();
           });
 

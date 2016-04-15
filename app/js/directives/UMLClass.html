@@ -24,16 +24,6 @@
   <div ng-repeat="association in model.associations">
     <!--<p style="text-align: left">{{association.name}}</p>
     <p style="text-align: left">{{association.multiplicity}}</p>-->
-    <div  ng-attr-id="{{model.id + '-svgContainer-' + association.object.id}}" class="svgContainer">
-      <svg ng-attr-id="{{model.id + '-svg-' + association.object.id}}" width="0" height="0" >
-        <path
-            ng-attr-id="{{model.id + '-path-' + association.object.id}}"
-            d="M0 0"
-            stroke="#000"
-            fill="none"
-            stroke-width="5px";/>
-      </svg>
-    </div>
-      <uml-class model="association.object"></uml-class>
+    <uml-class model="association.object"></uml-class>
   </div>
 </div>

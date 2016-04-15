@@ -72,14 +72,6 @@ angular.module("drawerService", [])
 		    var endX = endCoord.left + 0.5*endElem.outerWidth();
 		    var endY = endCoord.top;
 
-				console.log(startElem.outerWidth());
-				console.log(startCoord);
-				console.log(endCoord);
-				console.log(startX);
-				console.log(startY);
-				console.log(endX);
-				console.log(endY);
-
 		    // call function for drawing the path
 		    _drawPath(svg, path, startX, startY, endX, endY);
 		};
