@@ -19,7 +19,8 @@ angular.module("umlClassDirective", [])
                 associationId: scope.model.id + '-svg-' + association.object.id,
                 pathId: scope.model.id + '-path-' + association.object.id,
                 startId: scope.model.id,
-                endId: association.object.id
+                endId: association.object.id,
+                caption: association.name
               });
             }
           };

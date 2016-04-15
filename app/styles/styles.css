@@ -174,3 +174,13 @@ h6 {
 	font-weight: bold;
   padding: 0 0 0 5%;
 }
+
+.association_caption {
+    /* margin: auto; */
+    bottom: 20px;
+    padding: 20px;
+    vertical-align: 20px;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+}
