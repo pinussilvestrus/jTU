@@ -1,5 +1,5 @@
 angular.module("associationDirective", [])
-    .directive('association', function umlClassFactory(Drawer, $timeout) {
+    .directive('association', function umlClassFactory(Drawer, $timeout, $rootScope) {
       'use strict';
 
       /**
@@ -30,12 +30,14 @@ angular.module("associationDirective", [])
             var _randomTop = _random(0, 20);
             var _randomBottom = _random(0, 20);
 
-            if (_randomRight > _randomLeft) {
+            if ($rootScope.newClassIsLeft) {
               associationElement.css('margin-left', _randomLeft);
             }
             else {
               associationElement.css('margin-right', _randomRight);
             }
+
+            $rootScope.newClassIsLeft = !$rootScope.newClassIsLeft;
 
             associationElement.css('margin-top', _randomTop);
             associationElement.css('margin-bottom', _randomBottom);
@@ -50,7 +52,11 @@ angular.module("associationDirective", [])
               $("#" + scope.model.pathId),
               $("#" + scope.model.startId),
               $("#" + scope.model.endId),
-              $("#svgContainer"));
+              $("#svgContainer"),
+              $("#" + scope.model.captionId),
+              $("#" + scope.model.multiplicity.upperId),
+              $("#" + scope.model.multiplicity.lowerId),
+              scope.model.multiplicity.type);
           };
 
           $timeout(function(){

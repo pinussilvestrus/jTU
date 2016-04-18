@@ -3,16 +3,30 @@
     <h2> JSON-to-UML Converter</h2>
   </div>
   <div class="testData" id="testData">
-    <p>{
-      _umlClassName: 'TestClass',
-      string: "Hi",
-      number: 3,
-      testObject: {
-        _umlClassName: 'Thing',
-        test: 1
-      },
-      testArray: [{_umlClassName: 'Hello', string: 'test'}, 'string']
-    }</p>
+    <p id="testDataParam"  ng-click="selectAll(testDataParam)">
+      {
+        _umlClassName: 'TestClass',
+        string: "Hi",
+        number: 3,
+        testObject: {
+          _umlClassName: 'Thing',
+          test: 1
+        },
+        testArray: [
+          {
+            _umlClassName: 'Hello',
+            string: 'test'
+          },
+          'string'
+        ],
+        testArray2: [
+          {
+            _umlClassName: 'Hello',
+            string: 'test'
+          }
+        ]
+      }
+    </p>
     <p class="testData_header">Test-JSON</p>
   </div>
   <div class="row">

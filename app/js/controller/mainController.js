@@ -9,6 +9,7 @@ angular.module("mainController", [])
 			$scope.jsonValid = true;
 			$rootScope.associations = [];
 			$scope.umlJsonObject = undefined;
+			$rootScope.newClassIsLeft = true;
 			//_testDrawing();
 		};
 

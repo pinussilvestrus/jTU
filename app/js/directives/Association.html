@@ -4,6 +4,30 @@
       d="M0 0"
       stroke="#000"
       fill="none"
-      stroke-width="2px";/>
-      <p class="association_caption">{{model.caption}}</p>
+      stroke-width="2px"/>
+
+    <!-- association name -->
+    <text x="0" y="0"
+        ng-attr-id="{{model.captionId}}"
+        font-family="Raleway"
+        font-size="15">
+        {{model.caption}}
+    </text>
+
+    <!-- multiplicity upper -->
+    <text x="0" y="0"
+        ng-attr-id="{{model.multiplicity.upperId}}"
+        font-family="Raleway"
+        font-size="15">
+
+    </text>
+
+    <!-- multiplicity lower -->
+    <text x="0" y="0"
+        ng-attr-id="{{model.multiplicity.lowerId}}"
+        font-family="Raleway"
+        font-size="15">
+
+    </text>
+
 </svg>
