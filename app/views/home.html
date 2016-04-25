@@ -8,9 +8,19 @@
         _umlClassName: 'TestClass',
         string: "Hi",
         number: 3,
+        _umlMethod: {
+          name: 'increment',
+          returnValue: 'string',
+          params: [
+            {
+              name: 'num',
+              type: 'string'
+            }
+          ]
+        },
         testObject: {
-          _umlClassName: 'Thing',
-          test: 1
+           _umlClassName: 'Thing',
+           test: 1
         },
         testArray: [
           {
@@ -60,7 +70,7 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="input-field" id="umlField">
         <label for="textareaUML">UML-JSON-Object</label>
-        <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="processing"></textarea>
+        <textarea id="textareaUML" class="materialize-textarea" ng-model="umlJsonString" ng-disabled="true"></textarea>
       </div>
     </div>
     <div class="spacer40"></div>

@@ -16,7 +16,8 @@ angular.module("converterService", [])
 			id: String,
       className: String,
       attributes: Array of {name: String, type: String of ['string', 'number', 'date', 'Object', List of ['string', 'number', List, 'object']]},
-      associations: Array of {name: String, object: umlObject, multiplicity: String of ['1:n', '1:1', 'm:n']}
+      associations: Array of {name: String, object: umlObject, multiplicity: String of ['1:n', '1:1', 'm:n']},
+      methods: Array of {name: String, returnValue: String, params: Array of {name: String, type: String}}
     }
     * todo: if array has just equal-typed objects, then add to associations
     **/
@@ -59,12 +60,30 @@ angular.module("converterService", [])
         return type;
     };
 
+    var _createUMLMethod = function(jsonMethod) {
+      var _method = {
+        name: '',
+        returnValue: '',
+        params: []
+      };
+
+      _method.name = jsonMethod.name;
+      _method.returnValue = jsonMethod.returnValue;
+
+      for (var i = 0; i < jsonMethod.params.length; i++) {
+        _method.params.push(jsonMethod.params[i]);
+      }
+
+      return _method;
+    };
+
     _converter.jsonToUML = function(json) {
       var umlObject = {
 				id: _guidGenerator(),
         className: '',
         attributes : [],
-        associations: []
+        associations: [],
+        methods : []
       };
 
       for (key in json) {
@@ -74,6 +93,12 @@ angular.module("converterService", [])
 
         if (_key === '_umlClassName') {
           umlObject.className = _property;
+          continue;
+        }
+
+        if (_key === '_umlMethod') {
+          var _method = _createUMLMethod(_property);
+          umlObject.methods.push(_method);
           continue;
         }
 

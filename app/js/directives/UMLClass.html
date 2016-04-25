@@ -15,7 +15,13 @@
     <div class="spacer10"></div>
     <!-- Methods -->
     <div class="umlClass_methods">
-       <!-- Todo: uml methods to json functions -->
+       <div class="umlClass_attribute" ng-repeat="method in model.methods">
+         <p>+ {{method.name}}(
+           <span ng-repeat="param in method.params">
+             {{param.name}} : {{param.type}}
+           </span>
+           ) : {{method.returnValue}}
+       </div>
     </div>
   </div>
 

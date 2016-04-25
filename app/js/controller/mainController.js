@@ -21,6 +21,7 @@ angular.module("mainController", [])
 				$scope.processing = false;
 				$scope.umlJsonObject = Converter.jsonToUML(json);
 				$scope.umlJsonString = JSON.stringify($scope.umlJsonObject);
+				console.log($scope.umlJsonObject);
 			} catch(err) {
 				console.log(err);
 				$scope.processing = false;
