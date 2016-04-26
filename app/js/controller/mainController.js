@@ -1,5 +1,5 @@
 angular.module("mainController", [])
-	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, $timeout, Converter, Drawer){
+	.controller("mainController", function($http, $scope, $window, $sce, $rootScope, $location, $timeout, Converter, Drawer, Download){
 
 		var _testDrawing = function() {
 			Drawer.connectElements($("#svg1"), $("#path1"), $("#testData"),  $("#umlField"));
@@ -34,6 +34,10 @@ angular.module("mainController", [])
 					scrollTop: $("#modelSpacer").offset().top+50
 			}, 1200);
 			return false;
+		};
+
+		$scope.downloadModel = function() {
+			Download.downloadModel();
 		};
 
 	});

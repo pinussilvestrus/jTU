@@ -4,6 +4,7 @@ angular.module("mainApp", [
   'mainController',
   'converterService',
   'drawerService',
+  'downloadService',
   'umlClassDirective',
   'associationDirective'
 ])

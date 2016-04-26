@@ -16,6 +16,11 @@ a {
 body {
 	color: #424242;
 	font-family: 'Open Sans', sans-serif;
+	background: white;
+}
+
+.main {
+	background: white;
 }
 
 a:hover, a:active {
@@ -28,6 +33,14 @@ a:hover, a:active {
 
 .brand-logo img {
 	max-height:46px;
+}
+
+.downloadIc {
+	padding: 1%;
+	background-color: black;
+	float: right;
+	cursor: pointer;
+	margin-right: 5%;
 }
 
 association {

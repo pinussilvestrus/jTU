@@ -77,8 +77,14 @@
   </div>
   <div class="center-align umlModel" ng-if="umlJsonObject">
     <div class="spacer20"></div>
+    <div class="downloadIc" ng-click="downloadModel()">
+      <i class="material-icons" style="color: white; margin: 3%; padding: 1%">cloud_download</i>
+    </div>
+    <div class="spacer40"></div>
     <h4>UML-Diagramm</h4>
-    <uml-class model="umlJsonObject"></uml-class>
+    <div id="download" style="background-color: #B2DFDB">
+      <uml-class model="umlJsonObject"></uml-class>
+    </div>
   </div>
   <div class="spacer40"></div>
 </div>
