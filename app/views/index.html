@@ -39,6 +39,8 @@
 
 </head>
 <body ng-app="mainApp">
+  <div class="head-ribbon visible-xs">In Development</div>
+  <div class="corner-ribbon top-right hidden-xs">In Development</div>
   <div id="svgContainer">
     <association ng-repeat="association in $root.associations" model="association"></association>
     <div id="content" ng-view></div>
